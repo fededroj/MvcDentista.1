@@ -8,6 +8,7 @@ namespace MvcDentista.Models
     public class Diente
     {
         public int Id { get; set; }
+        public int IdPaciente { get; set; }
 
         //32 dientes
         public string Diente1 { get; set; }

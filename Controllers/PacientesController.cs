@@ -74,7 +74,7 @@ namespace MvcDentista.Controllers
 
             return View(paciente);
         }
-
+       
         // GET: Pacientes/Create
         public IActionResult Create()
         {
@@ -165,7 +165,23 @@ namespace MvcDentista.Controllers
 
             return View(paciente);
         }
+        // GET: 
+        public async Task<IActionResult> Diente(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var paciente = await _context.Paciente
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+
+            return View(paciente);
+        }
         // POST: Pacientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
